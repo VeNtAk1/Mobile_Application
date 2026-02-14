@@ -21,6 +21,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         this.context = context;
     }
 
+    // Метод для обновления списка (используется при поиске)
+    public void updateList(List<Product> newList) {
+        productList = newList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

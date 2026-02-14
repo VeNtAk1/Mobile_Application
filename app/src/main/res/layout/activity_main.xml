@@ -60,8 +60,7 @@
                 android:focusable="true"/>
         </LinearLayout>
 
-        <!-- ЗАГОЛОВОК КАТАЛОГА -->
-        <!-- ЗАГОЛОВОК КАТАЛОГА С КНОПКОЙ ФИЛЬТРА -->
+        <!-- ЗАГОЛОВОК КАТАЛОГА С ПОИСКОМ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,30 +68,79 @@
             android:gravity="center_vertical"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp">
+            android:layout_marginRight="16dp"
+            android:animateLayoutChanges="true">
 
+            <!-- Режим просмотра (заголовок + иконка поиска) -->
             <TextView
+                android:id="@+id/tvSectionTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="🔥 НАШИ ТОВАРЫ"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="#333333"/>
+                android:textColor="#333333"
+                android:visibility="visible"/>
 
-            <!-- Кнопка фильтра (в виде шестерёнки) -->
             <TextView
-                android:id="@+id/btnFilter"
+                android:id="@+id/btnSearch"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:text="⚙️"
+                android:text="🔍"
                 android:textSize="24sp"
                 android:gravity="center"
                 android:background="?android:attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:textColor="#2E7D32"/>
+                android:textColor="#2E7D32"
+                android:visibility="visible"/>
 
+            <!-- Режим поиска (поле ввода, занимает всю ширину) -->
+            <LinearLayout
+                android:id="@+id/searchLayout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:background="#F0F0F0"
+                android:gravity="center_vertical"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔍"
+                    android:textSize="20sp"
+                    android:textColor="#666"
+                    android:layout_marginRight="8dp"/>
+
+                <EditText
+                    android:id="@+id/etSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:hint="Поиск товаров..."
+                    android:background="@android:color/transparent"
+                    android:imeOptions="actionSearch"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/btnClearSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="✖"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:textColor="#666"/>
+            </LinearLayout>
         </LinearLayout>
 
         <!-- RECYCLERVIEW (СПИСОК ТОВАРОВ) -->
